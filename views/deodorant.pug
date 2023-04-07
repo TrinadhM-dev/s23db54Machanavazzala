@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  - let results = [{D_Name:"AXE",D_Type:"Solid",D_Cost:"10$"},{D_Name:"Nivea",D_Type:"Gel",D_Cost:"12$"},{D_Name:"FOGG",D_Type:"Spray",D_Cost:"14.5$"}]
+  div(class="container-fluid")
+    div(class="row")
+      each item,index in results
+        div(class="col-sm-2",onClick=`buy(${index})`)
+          p Name is #{item.D_Name}
+          p Type is #{item.D_Type}
+          p Cost is #{item.D_Cost}
+          //- Bonus Logic
+  script.
+    buy= (i) =>{
+      i+=1;
+      alert(`You Purchased Item ${i}`);
+    }  
+

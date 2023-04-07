@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+/* .btn{
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline;
+  text-decoration: none;
+  margin-left: 20px;
+} */
+#reduce{
+  cursor: pointer;
+}
+h1{
+  color:rgb(247, 4, 4)
+}
+img{
+  margin: 20px;
+}

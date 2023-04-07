@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p I like coffee and Code <br>
+     button(type="button" , class="btn btn-warning", onClick="reduce()") PRESS ME
+
+     div(id="reduce" ) REDUCE THE VALUE
+     a(href="deodorant") Link
+     script.
+      let count =20;
+      let change = -1;
+      reduce = () =>{
+        count = count+change;
+        change = change-1;
+        console.log(count,change,"REDUCE function output");
+        document.querySelector("#reduce").innerHTML = `Count is ${count} And Change is ${change} `;
+      }
