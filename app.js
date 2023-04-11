@@ -84,7 +84,7 @@ async function recreateDB(){
   //Third Object
   let instance3 = new Deodrant({D_Name:"Fogg", D_Type:'Spray',D_Cost:12});
   instance3.save().then( () => {
-    console.log('Second Object is created');
+    console.log('Third Object is created');
   }).catch( (e) => {
     console.log('There was an error', e.message);
   });
