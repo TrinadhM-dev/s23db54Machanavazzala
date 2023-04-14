@@ -10,7 +10,7 @@ var deoRouter = require('./routes/Deodorant');
 var boardRouter = require('./routes/board');
 var selRouter = require('./routes/selector');
 var Deodrant = require('./models/deodorants');
-var resourceRouter = require('./controllers/resource');
+var resourceRouter = require('./routes/resource');
 
 
 var app = express();

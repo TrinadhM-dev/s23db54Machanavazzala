@@ -14,16 +14,7 @@ router.delete('/deodorant/:id', deodorant_controller.deodorant_delete);
 // PUT request to update Costume.
 router.put('/deodorant/:id', deodorant_controller.deodorant_update_put);
 // GET request for one Costume.
-router.get('/deodorant/:id', deodorant_controller.deodorant_detail);
+router.get('/deodorant/:id', deodorant_controller.Deodorant_detail);
 // GET request for list of all Costume items.
 router.get('/deodorant', deodorant_controller.deodorant_list);
 module.exports = router;
-// API for our resources
-exports.api = function(req, res) {
-res.write('[');
-res.write('{"resource":"deodorant", ');
-res.write(' "verbs":["GET","PUT", "DELETE"] ');
-res.write('}');
-res.write(']')
-res.send();
-};
