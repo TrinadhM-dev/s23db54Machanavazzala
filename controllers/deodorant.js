@@ -80,8 +80,6 @@ exports.deodorant_update_put = async function(req, res) {
     try {
     let toUpdate = await Deodorant.findById( req.params.id)
     // Do updates of properties
-    if(req.body.Deodorant_type)
-    toUpdate.Deodorant_type = req.body.Deodorant_type;
     if(req.body.D_Name) toUpdate.D_Name = req.body.D_Name;
     if(req.body.D_Type) toUpdate.D_Type = req.body.D_Type;
     if(req.body.D_Cost) toUpdate.D_Cost = req.body.D_Cost;
