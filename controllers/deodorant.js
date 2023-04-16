@@ -92,4 +92,30 @@ exports.deodorant_update_put = async function(req, res) {
     failed`);
     }
     };
+    // Handle Costume delete on DELETE.
+exports.deodorant_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Deodorant.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    //Handle a show one view with id specified by query
+    exports.deodorant_view_one_Page = async function(req,res) {
+        console.log("single view for id" +req.query.id)
+            try{
+                result = await Deodorant.findById(req.query.id)
+                res.render('deodorant',{
+                    title:'Deodorant Detail',toShow:result
+                });
+            }
+            catch(err){
+                res.status(500)
+                res.send(`{'error:${err}'}`)
+            }
+    }
     
