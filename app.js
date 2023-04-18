@@ -89,7 +89,7 @@ async function recreateDB(){
     console.log('There was an error', e.message);
   });
 }
-  let reseed = true;
+  let reseed = false;
   if (reseed) { recreateDB();}
 
 
