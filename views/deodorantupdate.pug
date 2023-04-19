@@ -1,16 +1,16 @@
 extends layout
 
 block content
- h1= title
- -let deodorantid = toShow._id
- -let deodorant_name = toShow.D_Name
- - let deodorant_type = toShow.D_Type
- - let deodorant_cost = toShow.D_Cost
+  h1= title
+  -let deodorantid = toShow._id
+  -let deodorant_name = toShow.D_Name
+  -let deodorant_type = toShow.D_Type
+  -let deodorant_cost = toShow.D_Cost
 
- div.row(class='mb-2')
-  div.mr-1 ID is
-  div #{deodorantid}
-  - let actionid = "/resource/dedorant/" + costumeid
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{deodorantid}
+  - let actionid = "/resource/deodorant/" + deodorantid
   form(id='DeodorantForm', action= actionid, method="PUT")
     div.form-group
         label.deodorantAttr(for='D_Name') Deodorant Name
@@ -24,18 +24,18 @@ block content
     input(type="submit")
   script.
     document.forms['DeodorantForm'].addEventListener('submit', (event) => {
-    event.preventDefault();
+      event.preventDefault();
     // TODO do something here to show user that form is being submitted
-    fetch(event.target.action, {
-    method: 'PUT',
-    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-    }).then((resp) => {
-    return resp.json(); // or resp.text() or whatever the server sends
-    }).then((body) => {
-    alert("Update succeded")
+      fetch(event.target.action, {
+        method:'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
     // TODO handle body
-    }).catch((error) => {
+      }).catch((error) => {
     // TODO handle error
-    alert("Update failed " + error )
-    });
+        alert("Update failed " + error )
+      });
     });

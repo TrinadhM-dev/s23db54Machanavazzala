@@ -27,4 +27,13 @@ img{
 .deodorantAttr {
   background-color: aquamarine;
   width: 120px;
+  font-weight: bold;
+  }
+  input{
+    color: darkblue;
+    font-weight: bold;
+  }
+  .col-sm-2{
+  color: darkblue;
+  font-weight: bold;
   }
