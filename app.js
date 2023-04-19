@@ -10,7 +10,7 @@ var deoRouter = require('./routes/Deodorant');
 var boardRouter = require('./routes/board');
 var selRouter = require('./routes/selector');
 var Deodrant = require('./models/deodorants');
-var resourceRouter = require('./controllers/resource');
+var resourceRouter = require('./routes/resource');
 
 
 var app = express();
@@ -84,12 +84,12 @@ async function recreateDB(){
   //Third Object
   let instance3 = new Deodrant({D_Name:"Fogg", D_Type:'Spray',D_Cost:12});
   instance3.save().then( () => {
-    console.log('Second Object is created');
+    console.log('Third Object is created');
   }).catch( (e) => {
     console.log('There was an error', e.message);
   });
 }
-  let reseed = true;
+  let reseed = false;
   if (reseed) { recreateDB();}
 
 

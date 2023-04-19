@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    h1= title
+    
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        -let deodorantid = toShow._id
+        -let D_Name = toShow.D_Name
+        - let D_Type = toShow.D_Type
+        - let D_Cost = toShow.D_Cost
+        - let actionid = "/resource/deodorant/" + deodorantid
+        script let actionid = "#{actionid}"
+        div
+            div.row
+                div(class='deodorantAttr mr-3') Deodorant ID is:
+                div #{deodorantid}
+            div.row
+                div(class='deodorantAttr mr-3') Deodorant Name is:
+                div #{D_Name}
+            div.row
+                div(class='deodorantAttr mr-3') Deodorant Type is:
+                div #{D_Type}
+            div.row
+                div(class='deodorantAttr mr-3') Deodorant Cost is:
+                div #{D_Cost}
+        
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+            function cancel() {
+            // Go back to the home page for the deodorant collection
+            window.location.href='/Deodorant'
+            }
+    script.
+                function deleteOnid() {
+                // delete first
+                fetch(actionid, {
+                method: 'DELETE' // Don't need a body for the delete
+                }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+                }).then((body) => {
+                alert("Delete succeded")
+                window.location.href='/Deodorant'
+                // TODO handle body
+                }).catch((error) => {
+                // TODO handle error
+                alert("Delete failed " + error )
+                });
+                }

@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -24,3 +24,16 @@ h1{
 img{
   margin: 20px;
 }
+.deodorantAttr {
+  background-color: aquamarine;
+  width: 120px;
+  font-weight: bold;
+  }
+  input{
+    color: darkblue;
+    font-weight: bold;
+  }
+  .col-sm-2{
+  color: darkblue;
+  font-weight: bold;
+  }

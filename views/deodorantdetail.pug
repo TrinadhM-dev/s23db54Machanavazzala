@@ -1,0 +1,16 @@
+extends layout
+block content
+    h1= title
+    - let deodorant_name = toShow.D_Name
+    - let deodorant_type = toShow.D_Type
+    - let deodorant_cost = toShow.D_Cost
+        div
+            div.row(id="deodorantAttr")
+                div(class="deodorantAttr mr-3") deodorant Name is:
+                div #{deodorant_name}
+            div.row
+                div(class="deodorantAttr mr-3") deodorant Type is:
+                div #{deodorant_type}
+            div.row
+                div(class="deodorantAttr mr-3") deodorant Cost is:
+                div #{deodorant_cost}
