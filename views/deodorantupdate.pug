@@ -2,10 +2,13 @@ extends layout
 
 block content
   h1= title
-  -let deodorantid = toShow._id
-  -let deodorant_name = toShow.D_Name
-  -let deodorant_type = toShow.D_Type
-  -let deodorant_cost = toShow.D_Cost
+  if(toShow == null)
+    h2 No instance of this detail
+  else  
+    -let deodorantid = toShow._id
+    -let deodorant_name = toShow.D_Name
+    -let deodorant_type = toShow.D_Type
+    -let deodorant_cost = toShow.D_Cost
 
   div.row(class='mb-2')
     div.mr-1 ID is
@@ -33,6 +36,7 @@ block content
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
         alert("Update succeded")
+        window.location.href='/Deodorant'
     // TODO handle body
       }).catch((error) => {
     // TODO handle error
