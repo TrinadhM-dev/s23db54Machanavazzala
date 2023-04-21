@@ -4,16 +4,16 @@ block content
   h1= title
   - let items = results
   div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
       each item,index in items
-        div(class="col-sm-2",onClick=`buy(${index})`)
+        - let destination = `dispatch(\"/Deodorant/update?id=${item._id}\")`
+        div(class="col-sm-2 m-1")
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
           p Name is #{item.D_Name}
           p Type is #{item.D_Type}
           p Cost is #{item.D_Cost}
           //- Bonus Logic
   script.
-    buy= (i) =>{
-      i+=1;
-      alert(`You Purchased Item ${i}`);
-    }  
-
+    dispatch= (path) =>{
+      window.location.href=path
+    }
