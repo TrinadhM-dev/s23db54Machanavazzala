@@ -4,6 +4,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//passport imports and the code
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var Account = require('./models/Account');
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+  Account.findOne({ username: username }, function (err, user) {
+  if (err) { return done(err); }
+  if (!user) {
+  return done(null, false, { message: 'Incorrect username.' });
+  }
+  if (!user.validPassword(password)) {
+  return done(null, false, { message: 'Incorrect password.' });
+  }
+  return done(null, user);
+  });
+  }))
+
+  
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var deoRouter = require('./routes/Deodorant');
@@ -11,6 +32,7 @@ var boardRouter = require('./routes/board');
 var selRouter = require('./routes/selector');
 var Deodrant = require('./models/deodorants');
 var resourceRouter = require('./routes/resource');
+
 
 
 var app = express();
@@ -92,5 +114,20 @@ async function recreateDB(){
   let reseed = false;
   if (reseed) { recreateDB();}
 
+  // passport config
+// Use the existing connection
+// The Account model
+
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+  //using the express-session
+  app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+    }));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
 module.exports = app;
