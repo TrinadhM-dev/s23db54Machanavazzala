@@ -10,25 +10,25 @@ block content
     -let deodorant_type = toShow.D_Type
     -let deodorant_cost = toShow.D_Cost
 
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{deodorantid}
-  - let actionid = "/resource/deodorant/" + deodorantid
-  form(id='DeodorantForm', action= actionid, method="PUT")
-    div.form-group
+    div.row(class='mb-2')
+     div.mr-1 ID is
+     div #{deodorantid}
+    - let actionid = "/resource/deodorant/" + deodorantid
+    form(id='DeodorantForm', action= actionid, method="PUT")
+     div.form-group
         label.deodorantAttr(for='D_Name') Deodorant Name
         input#deodorant_name(type='text', name='D_Name', value= deodorant_name )
-    div.form-group
+     div.form-group
         label.deodorantAttr(for='D_Type') Deodorant Type
         input#deodorant_type(type='text', name='D_Type', value= deodorant_type )
-    div.form-group
+     div.form-group
         label.deodorantAttr(for='D_Cost') Deodorant cost
         input#deodorant_cost(type='number', name='D_Cost', value= deodorant_cost )
-    input(type="submit")
-  script.
-    document.forms['DeodorantForm'].addEventListener('submit', (event) => {
+     input(type="submit")
+    script.
+     document.forms['DeodorantForm'].addEventListener('submit', (event) => {
       event.preventDefault();
-    // TODO do something here to show user that form is being submitted
+     // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {
         method:'PUT',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
@@ -37,9 +37,9 @@ block content
       }).then((body) => {
         alert("Update succeded")
         window.location.href='/Deodorant'
-    // TODO handle body
+     // TODO handle body
       }).catch((error) => {
-    // TODO handle error
+     // TODO handle error
         alert("Update failed " + error )
       });
-    });
+     });

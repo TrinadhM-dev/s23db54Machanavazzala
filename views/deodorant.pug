@@ -3,12 +3,15 @@ extends layout
 block content
   h1= title
   - let items = results
+    button.btn( class="btn-success", onclick= `dispatch(\"/Deodorant/create")`) Create
   div(class="container-fluid")
     div(class="row m-1")
       each item,index in items
         - let destination = `dispatch(\"/Deodorant/update?id=${item._id}\")`
         div(class="col-sm-2 m-1")
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-primary ml-1",  onclick= `dispatch(\"/Deodorant/update?id=${item._id}\")`) Update
+          button.btn( class="btn-danger ml-1",  onclick= `dispatch(\"/Deodorant/delete?id=${item._id}\")`) Delete
+          button.btn( class="btn-warning ml-1", onclick= `dispatch(\"/Deodorant/detail?id=${item._id}\")`) Detail
           p Name is #{item.D_Name}
           p Type is #{item.D_Type}
           p Cost is #{item.D_Cost}
